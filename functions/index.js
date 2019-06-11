@@ -34,7 +34,7 @@ app.post('/api/items', async (req, res) => {
         };
         itemsRef.doc(item.id.toString()).set(item);
         res.send(item);
-      } catch (error) {
+      }catch(error){
         console.log(error);
         res.sendStatus(500);
       }
@@ -49,11 +49,10 @@ app.put('/api/items/:id', async (req, res) => {
       description: req.body.description
     });
     console.log("Document successfully updated");
-
   } catch {
     res.status(500).send("Error editing document");
   }
-})
+});
 
 app.delete('/api/items/:id', async (req, res) => {
   let id = req.params.id.toString();
@@ -72,7 +71,7 @@ app.delete('/api/items/:id', async (req, res) => {
   }catch{
     res.status(500).send("Error deleting document: ",err);
   }
-})
+});
 
 
 exports.app = functions.https.onRequest(app);

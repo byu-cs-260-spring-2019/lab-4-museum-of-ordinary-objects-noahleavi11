@@ -31,6 +31,10 @@ var app = new Vue({
           description: this.description
         });
         this.addItem = result.data;
+        this.title = "";
+        this.description = "";
+        this.selected = "";
+        this.getItems();
       } catch (error) {
         console.log(error);
       }
